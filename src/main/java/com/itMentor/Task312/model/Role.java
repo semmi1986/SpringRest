@@ -20,10 +20,4 @@ public class Role {
 
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "link_user_role",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private List<User> users;
 }
