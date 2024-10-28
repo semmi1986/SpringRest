@@ -37,9 +37,9 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry ->
-                        registry.requestMatchers("/api/auth/login").permitAll()
+                        registry.requestMatchers("/api/auth/**").permitAll()
                                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                                .requestMatchers("/userInfo/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN")
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

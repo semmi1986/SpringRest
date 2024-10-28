@@ -1,6 +1,7 @@
 package com.itMentor.Task312.controller;
 
 import com.itMentor.Task312.model.LoginRequest;
+import com.itMentor.Task312.model.Role;
 import com.itMentor.Task312.service.Impl.UserAuthDetailServiceImpl;
 import com.itMentor.Task312.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
             );
 
-            // Получение деталей пользователя
+            // Получение пользователя
             UserDetails userDetails = userAuthDetailService.loadUserByUsername(loginRequest.getUsername());
             // Генерация JWT токена
             String token = jwtUtil.generateToken(userDetails);
