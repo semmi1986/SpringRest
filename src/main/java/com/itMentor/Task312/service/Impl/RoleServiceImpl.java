@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -30,8 +29,8 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role findByName(String name) {
-        Optional<Role> role = repository.findByName(name);
-        return role.get();
+        return repository.findByName(name)
+                .orElseThrow(() -> new IllegalArgumentException("Role not found: " + name));
     }
 
 }

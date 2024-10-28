@@ -1,7 +1,6 @@
 package com.itMentor.Task312.service;
 
 import com.itMentor.Task312.model.Role;
-import com.itMentor.Task312.model.User;
 
 import java.util.List;
 

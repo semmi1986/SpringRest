@@ -52,8 +52,4 @@ public class UserAuthDetails implements UserDetails {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
-
-    public User getUserAuth() {
-        return this.user;
-    }
 }

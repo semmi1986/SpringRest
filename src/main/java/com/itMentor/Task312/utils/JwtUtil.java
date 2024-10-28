@@ -14,7 +14,6 @@ import java.util.Map;
 @Component
 public class JwtUtil {
     private final String SECRET_KEY = "your_secret_key";
-    private final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
@@ -22,6 +21,8 @@ public class JwtUtil {
     }
 
     private String createToken(Map<String, Object> claims, String subject) {
+        // 1 hour
+        long EXPIRATION_TIME = 1000 * 60 * 60;
         JwtBuilder builder = Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
@@ -30,11 +31,6 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY);
 
         return builder.compact();
-    }
-
-    public boolean validateToken(String token, UserDetails userDetails) {
-        final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     public String extractUsername(String token) {
@@ -48,7 +44,5 @@ public class JwtUtil {
                 .getBody();
     }
 
-    private boolean isTokenExpired(String token) {
-        return extractAllClaims(token).getExpiration().before(new Date());
-    }
+
 }

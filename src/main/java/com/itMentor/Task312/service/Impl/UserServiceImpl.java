@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,8 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        Optional<User> foundPerson = repository.findById(id);
-        return foundPerson.get();
+        return repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Role not found: " + id));
     }
 
     @Override
@@ -44,8 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        Optional<User> foundPerson = repository.findByUsername(username);
-        return foundPerson.get();
+       return repository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("Role not found: " + username));
     }
 
 
