@@ -22,4 +22,15 @@ public class RoleServiceImpl implements RoleService {
         return repository.findAll();
     }
 
+    @Override
+    public Role save(Role role) {
+        return repository.save(role);
+    }
+
+    @Override
+    public Role findByName(String name) {
+        return repository.findByName(name)
+                .orElseThrow(() -> new IllegalArgumentException("Role not found: " + name));
+    }
+
 }

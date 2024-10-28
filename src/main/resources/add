@@ -1,0 +1,12 @@
+{
+    "username": "Noi",
+    "password": "789",
+    "setRoles": [
+        {
+            "id": 1,
+            "name": "ADMIN"
+        }
+    ],
+    "email": "asdfgh@com.by",
+    "lastName": "Soier"
+}

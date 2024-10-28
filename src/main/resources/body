@@ -1,0 +1,40 @@
+enter for admin
+{
+    "username": "Admin",
+    "password": "123"
+}
+
+add
+{
+    "username": "Bob",
+    "password": "123",
+    "setRoles": [
+        {
+            "name": "ROLE_ADMIN"
+        }
+    ],
+    "email": "admin@com.by",
+    "lastName": "Soier"
+}
+
+
+update
+
+{
+    "username": "name",
+    "lastName": "lastName",
+    "email": "name@example.com",
+    "password": "123", // Укажи новый пароль, если требуется
+    "setRoles": [
+        {
+            "name": "ROLE_ADMIN"
+        },
+        {
+            "name": "ROLE_USER"
+        }
+    ]
+}
+
+{
+    "name": "ROLE_NAME"
+}
